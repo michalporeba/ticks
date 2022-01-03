@@ -22,8 +22,22 @@ Additionally, it should integrate with all other three project mentioned above. 
 
 
 &nbsp;
-## The result
-So far it looks as unimpressive as this:
+## The results so far
+
+From JSON representation of checks:
+
+```javascript
+{
+      "id" : "35abdd55-bb69-4f90-ba43-3c78d615f184",
+      "checks" : [
+        { "id" : "a6087a1e-b73a-41b9-a3ae-f0c0f15dbb1c", "name": "First Check" },
+        { "id" : "de30b788-2179-4682-bd46-839971c2aaef", "name": "Second Check" },
+        { "id" : "56904b8e-4e8d-45f9-b139-e4fd4802984e", "name": "Third Check" },
+        { "id" : "98e19e07-5ae0-4ef0-a4f9-fa949bcc09e9", "name": "Fourth Check" }
+      ]
+    }
+```
+
+I can render this  unimpressive checklist:
 
 ![](./docs/images/first.png)
-So far it looks as unimpresive as this: 

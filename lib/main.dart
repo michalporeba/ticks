@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'checklist/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,8 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-          child: Text('to be continued ...', style: Theme.of(context).textTheme.headline4)
+      body: const Center(
+          child: CheckList()
       ),
     );
   }
