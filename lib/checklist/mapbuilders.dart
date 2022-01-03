@@ -33,7 +33,7 @@ class MapSimpleCheckBuilder extends SimpleCheckBuilder {
   @override
   SimpleCheck build() {
     id = data['id'];
-    label = data['name'];
+    label = data['name'] ?? 'Unnamed check';
     checked = false;
     return SimpleCheck(this);
   }

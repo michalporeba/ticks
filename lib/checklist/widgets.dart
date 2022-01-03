@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ticks/checklist/provider.dart';
 import 'check.dart';
 import 'checklist.dart';
+import 'check.dart' as m;
 
 class CheckList extends StatefulWidget {
   const CheckList({Key? key}) : super(key: key);
@@ -17,17 +18,10 @@ class _CheckListState extends State<CheckList> {
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, i) {
-        if (i.isOdd && i < checklist.checks.length * 2) { return const Divider(); }
-
-        final int index = i ~/2;
-
-        if (index < checklist.checks.length) {
+      itemCount: checklist.checks.length,
+      itemBuilder: (context, index) {
           Check check = checklist.checks[index];
-          return Text(check.label, style: Theme.of(context).textTheme.headline5);
-        }
-
-        return Container();
+          return SimpleCheck(model: check as m.SimpleCheck);
       }
     );
   }
@@ -35,10 +29,22 @@ class _CheckListState extends State<CheckList> {
 
 
 class SimpleCheck extends StatelessWidget {
-  const SimpleCheck({Key? key}) : super(key: key);
+  final m.SimpleCheck model;
+  SimpleCheck({required this.model, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Expanded(child: Text(model.label, style: Theme.of(context).textTheme.headline5)),
+            const Checkbox(value: false, onChanged: null)
+          ],
+        ),
+        const Divider()
+      ],
+    );
   }
 }
