@@ -1,5 +1,4 @@
 import 'package:ticks_api/ticks_api.dart';
-import 'package:ticks_api/blueprint.dart';
 
 /// {@template ticks_repository}
 /// A Very Good Project created by Very Good CLI.
