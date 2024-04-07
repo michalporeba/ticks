@@ -11,19 +11,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Ticks',
+      title: "Checklists",
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(title: 'Ticks'),
+      initialRoute: CurrentCheckListsPage.id,
+      routes: {
+        CurrentCheckListsPage.id: (context) => const CurrentCheckListsPage()
+      }
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class CurrentCheckListsPage extends StatelessWidget {
+  static String id = "currentCheckLists";
+  const CurrentCheckListsPage({super.key});
 
-  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("SJAC CHECKLISTS")),
+      body: const Center(child: Text("The new beginnings"))
+    );
+  }
+}
+
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -34,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("CHECKLISTS"),
       ),
       body: const Center(
           child: CheckList()
