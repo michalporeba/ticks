@@ -25,3 +25,8 @@ Blocs interact with zero or more repositories.
 Blocs react to events and emit states which trigger changes in the UI.
 Widgets within each feature should generally only depend on the corresponding bloc and render UI based on the current state.
 The UI can notify the bloc of user input via events.
+
+
+# Other
+
+* Remember to run `dart run build_runner build` after changing models

@@ -16,7 +16,7 @@ class Blueprint extends Equatable {
     this.description = '',
     this.version = '0.0.0',
   }) : assert(
-    id == null ,
+    id == null,
     "Blueprint's ID must either be null or not empty",
   ), this.id = id ?? "";
 
