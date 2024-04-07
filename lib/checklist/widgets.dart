@@ -5,7 +5,7 @@ import 'checklist.dart';
 import 'check.dart' as m;
 
 class CheckList extends StatefulWidget {
-  const CheckList({Key? key}) : super(key: key);
+  const CheckList({super.key});
 
   @override
   State<CheckList> createState() => _CheckListState();
@@ -30,7 +30,7 @@ class _CheckListState extends State<CheckList> {
 
 class SimpleCheck extends StatelessWidget {
   final m.SimpleCheck model;
-  SimpleCheck({required this.model, Key? key}) : super(key: key);
+  const SimpleCheck({required this.model, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class SimpleCheck extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: Text(model.label, style: Theme.of(context).textTheme.headline5)),
+            Expanded(child: Text(model.label, style: Theme.of(context).textTheme.headlineSmall)),
             const Checkbox(value: false, onChanged: null)
           ],
         ),

@@ -17,17 +17,18 @@ abstract class CheckBuilder {
 }
 
 class SimpleCheck extends Check {
-  final checked;
+  final bool checked;
 
-  SimpleCheck(SimpleCheckBuilder builder) :
-      checked = builder.checked,
-      super(builder);
+  SimpleCheck(SimpleCheckBuilder super.builder) :
+      checked = builder.checked;
 
-   bool isComplete() => checked;
+   @override
+  bool isComplete() => checked;
 }
 
 abstract class SimpleCheckBuilder extends CheckBuilder {
   late bool checked;
 
+  @override
   SimpleCheck build();
 }
