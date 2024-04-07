@@ -41,3 +41,9 @@ From JSON representation of checks:
 I can render this  unimpressive checklist:
 
 ![](./docs/images/first.png)
+
+&nbsp;
+## Notes
+
+* I have upgraded flutter 2 to 3. There were issues with the gradle which I resolved by creating a new project and copying the gradle files over here.
+* I'm following https://bloclibrary.dev/tutorials/flutter-todos/ for structure and to learn BLoC
