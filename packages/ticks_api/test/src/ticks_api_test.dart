@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:test/test.dart';
-import 'package:ticks_api/ticks_api.dart';
+import 'package:ticks_api/src/model/blueprint.dart';
 
 void main() {
-  group('TicksApi', () {
+  group('Blueprint', () {
     test('can be instantiated', () {
-      expect(TicksApi(), isNotNull);
+      expect(Blueprint(title: "test"), isNotNull);
     });
   });
 }
