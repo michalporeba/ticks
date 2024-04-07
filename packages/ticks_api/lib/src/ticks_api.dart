@@ -1,6 +1,4 @@
-import 'package:ticks_api/src/model/blueprint.dart';
-
-import 'model/checklist.dart';
+import 'package:ticks_api/ticks_api.dart';
 
 /// {@template ticks_api}
 /// The interfaces and model for the API providing access to ticks

@@ -2,3 +2,5 @@
 library;
 
 export 'src/ticks_api.dart';
+export 'src/model/blueprint.dart';
+export 'src/model/checklist.dart';
