@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:local_ticks_api/local_ticks_api.dart';
-import 'package:ticks/bootstrap.dart';
-import 'checklist/widgets.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Checklists",
+      title: 'Checklists',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme(
+          colorScheme: const ColorScheme(
               brightness: Brightness.light,
               background: Color(0xfffff7ab),
               onBackground: Color(0xff222222),
@@ -47,8 +43,8 @@ class MyApp extends StatelessWidget {
       initialRoute: StartAChecklistView.id,
       routes: {
         StartAChecklistView.id: (context) => const StartAChecklistView(),
-        CurrentCheckListsPage.id: (context) => const CurrentCheckListsPage()
-      }
+        CurrentCheckListsPage.id: (context) => const CurrentCheckListsPage(),
+      },
     );
   }
 }
@@ -63,9 +59,9 @@ class HomeView extends StatelessWidget {
 }
 
 class StartAChecklistView extends StatelessWidget {
-  static String id = "startAChecklist";
 
   const StartAChecklistView({super.key});
+  static String id = 'startAChecklist';
 
   @override
   Widget build(BuildContext context) {
@@ -74,41 +70,46 @@ class StartAChecklistView extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            title: Text("Start a new checklist", style: textTheme.headlineLarge),
-            actions: [IconButton(onPressed:(){}, icon: Icon(Icons.settings))],
+            title: Text(
+              'Start a new checklist',
+              style: textTheme.headlineLarge,
+            ),
+            actions: [IconButton(
+              onPressed:(){},
+              icon: const Icon(Icons.settings),),
+            ],
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(64.0),
+              preferredSize: const Size.fromHeight(64),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: TextFormField(
                   decoration: InputDecoration(
                     hintText: 'Search',
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     suffixIcon: Container(
-                      margin: EdgeInsets.all(4),
-                      child: Icon(Icons.filter_alt_outlined)
-                    )
+                      margin: const EdgeInsets.all(4),
+                      child: const Icon(Icons.filter_alt_outlined),
+                    ),
                   ),
                 ),
-              )
+              ),
         ),
         ),
-        body: SingleChildScrollView(
-            padding: EdgeInsets.all(8.0),
+        body: const SingleChildScrollView(
+            padding: EdgeInsets.all(8),
             child: Column(
               children: [
-                Blueprint(title: "Ambulance check"),
-                Blueprint(title: "Radio check"),
-                Blueprint(title: "Response bag check")
+                Blueprint(title: 'Ambulance check'),
+                Blueprint(title: 'Radio check'),
+                Blueprint(title: 'Response bag check'),
               ],
-
-            )
+            ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {},
           tooltip: 'Start a checklist',
           child: const Icon(Icons.add),
-        )
+        ),
     );
   }
 }
@@ -116,8 +117,8 @@ class StartAChecklistView extends StatelessWidget {
 
 
 class CurrentCheckListsPage extends StatelessWidget {
-  static String id = "currentCheckLists";
   const CurrentCheckListsPage({super.key});
+  static String id = 'currentCheckLists';
 
   @override
   Widget build(BuildContext context) {
@@ -126,49 +127,49 @@ class CurrentCheckListsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("SJAC CHECKLISTS", style: textTheme.headlineLarge),
-        actions: [IconButton(onPressed:(){}, icon: Icon(Icons.settings))]
+        title: Text('SJAC CHECKLISTS', style: textTheme.headlineLarge),
+        actions: [IconButton(onPressed:(){}, icon: const Icon(Icons.settings))],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(8.0),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(8),
         child: Column(
           children: [
             OpenChecklists(),
-            SizedBox(height: 16.0),
+            SizedBox(height: 16),
             SuggestedBlueprints(),
           ],
 
-        )
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Start a checklist',
         child: const Icon(Icons.add),
-      )
+      ),
     );
   }
 }
 
 class Checklist extends StatelessWidget {
-  const Checklist({super.key, required this.title});
+  const Checklist({required this.title, super.key});
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8),
       child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
+            const Padding(
+              padding: EdgeInsets.only(left: 8),
               child: Icon(Icons.check_box_outlined),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 8),
               child: Icon(Icons.check_box_outline_blank),
             ),
-            Text(this.title, style: Theme.of(context).textTheme.bodyLarge)
-          ]
+            Text(title, style: Theme.of(context).textTheme.bodyLarge),
+          ],
       ),
     );
   }
@@ -181,30 +182,33 @@ class OpenChecklists extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Open Checklists", style: Theme.of(context).textTheme.headlineMedium,),
-        Checklist(title: "Ambulance HK 105"),
-        Checklist(title: "Handheld radio HK 423")
+        Text(
+          'Open Checklists',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        const Checklist(title: 'Ambulance HK 105'),
+        const Checklist(title: 'Handheld radio HK 423'),
       ],
     );
   }
 }
 
 class Blueprint extends StatelessWidget {
-  const Blueprint({super.key, required this.title});
+  const Blueprint({required this.title, super.key});
 
   final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8),
       child: Row(children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 18),
           child: Icon(Icons.checklist),
         ),
-        Text(this.title, style: Theme.of(context).textTheme.bodyLarge,),
-      ]),
+        Text(title, style: Theme.of(context).textTheme.bodyLarge,),
+      ],),
     );
   }
 }
@@ -216,35 +220,13 @@ class SuggestedBlueprints extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text("Suggested cheklists", style: Theme.of(context).textTheme.headlineMedium,),
-        Blueprint(title: "Report an issue"),
-        Blueprint(title: "Log a radio check")
-      ]
-    );
-  }
-}
-
-
-
-
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("CHECKLISTS"),
-      ),
-      body: const Center(
-          child: CheckList()
-      ),
+        Text(
+          'Suggested cheklists',
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        const Blueprint(title: 'Report an issue'),
+        const Blueprint(title: 'Log a radio check'),
+      ],
     );
   }
 }

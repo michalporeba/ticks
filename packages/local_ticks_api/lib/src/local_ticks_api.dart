@@ -26,6 +26,7 @@ class LocalTicksApi extends TicksApi {
   static const checklistsCollectionKey = '__checklists_collection_key__';
 
   String? _getValue(String key) => _plugin.getString(key);
+  // ignore: unused_element
   Future<void> _setValue(String key, String value) =>
       _plugin.setString(key, value);
 

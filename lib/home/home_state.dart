@@ -5,7 +5,7 @@ enum HomeTab { todos, stats }
 final class HomeState extends Equatable {
   const HomeState({
     this.tab = HomeTab.todos,
-    this.text = "Hello,"
+    this.text = 'Hello,',
   });
 
   final HomeTab tab;

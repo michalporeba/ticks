@@ -22,17 +22,18 @@ dependencies:
   shared_preferences: ^2.2.2
   ticks_api:
     path: packages/ticks_api
-  ticks_repository:
-    path: packages/ticks_repository
   ticks_domain:
     path: packages/ticks_domain
-
+  ticks_repository:
+    path: packages/ticks_repository
+  
 dev_dependencies:
   bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
   mockingjay: ^0.5.0
   mocktail: ^1.0.0
+  very_good_analysis: ^5.1.0
 
 flutter:
   uses-material-design: true

@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
-import 'package:uuid/uuid.dart';
-import 'json_map.dart';
+import 'package:ticks_api/src/model/json_map.dart';
 
 part 'blueprint.g.dart';
 
@@ -11,14 +10,13 @@ part 'blueprint.g.dart';
 class Blueprint extends Equatable {
   /// {@macro blueprint}
   const Blueprint({
-    String? id,
-    required this.title,
+    required this.title, String? id,
     this.description = '',
     this.version = '0.0.0',
   }) : assert(
     id == null,
     "Blueprint's ID must either be null or not empty",
-  ), this.id = id ?? "";
+  ), id = id ?? '';
 
   final String id;
   final String title;

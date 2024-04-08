@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'home_cubit.dart';
+import 'package:ticks/home/home_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,15 +20,16 @@ class HomeView extends StatelessWidget {
 
     const HomeView({super.key});
 
-    Widget build(BuildContext context) {
+    @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
               'You have pushed the button this many times:',
             ),
@@ -36,7 +37,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.read<HomeCubit>().setText("World!"),
+        onPressed: () => context.read<HomeCubit>().setText('World!'),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
