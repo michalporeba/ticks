@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
-import 'package:ticks_domain/src/json_map.dart';
+import 'package:ticks/entities/json_map.dart';
 
 part 'checklist.g.dart';
 

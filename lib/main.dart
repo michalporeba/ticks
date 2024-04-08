@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ticks/entities/blueprint/blueprint.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
-import 'package:ticks_domain/ticks_domain.dart';
 
 void main() {
   // TODO(michal): repositories will have to be created here.
@@ -35,10 +35,10 @@ class AppWithProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
+    return
     //MultiRepositoryProvider(
       //providers: repositoryProviders,
-      //child: 
+      //child:
       MultiBlocProvider(
         providers: blocProviders,
         child: app,
