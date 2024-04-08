@@ -4,22 +4,22 @@ part of 'select_blueprint_bloc.dart';
 class SelectBlueprintState extends Equatable {
   const SelectBlueprintState({
     this.blueprints = const [],
-    this.selectedBlueprint,
+    this.isFiltered = false,
   });
 
   final List<Blueprint> blueprints;
-  final Blueprint? selectedBlueprint;
+  final bool isFiltered;
 
   SelectBlueprintState copyWith({
     List<Blueprint>? blueprints,
-    Blueprint? selectedBlueprint,
+    bool? isFiltered,
   }) {
     return SelectBlueprintState(
       blueprints: blueprints ?? this.blueprints,
-      selectedBlueprint: selectedBlueprint ?? this.selectedBlueprint,
+      isFiltered: isFiltered ?? this.isFiltered,
     );
   }
 
   @override
-  List<Object?> get props => [blueprints, selectedBlueprint];
+  List<Object?> get props => [blueprints, isFiltered];
 }
