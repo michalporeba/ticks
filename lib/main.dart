@@ -1,9 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
+import 'package:ticks_domain/ticks_domain.dart';
 
 void main() {
-  runApp(const MyApp());
+  // TODO(michal): repositories will have to be created here.
+  // they will have to be provided to TicksApp through the constructor.
+  final selectBlueprintBlocProvider = BlocProvider(
+    create: (ctx) => SelectBlueprintBloc()..add(RequestedBlueprints()),
+  );
+
+  runApp(AppWithProviders(
+    app: const TicksApp(),
+    blocProviders: [ // globally accessible blocs
+      selectBlueprintBlocProvider,
+    ],
+    repositoryProviders: const [],
+    ),
+  );
 }
+
+class AppWithProviders extends StatelessWidget {
+  const AppWithProviders({
+    required this.app,
+    required this.blocProviders,
+    required this.repositoryProviders,
+    super.key,
+  });
+
+  final List<BlocProvider<dynamic>> blocProviders;
+  final List<RepositoryProvider<dynamic>> repositoryProviders;
+  final Widget app;
+
+  @override
+  Widget build(BuildContext context) {
+    return 
+    //MultiRepositoryProvider(
+      //providers: repositoryProviders,
+      //child: 
+      MultiBlocProvider(
+        providers: blocProviders,
+        child: app,
+      //),
+    );
+  }
+}
+
 
 // Future<void> main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -15,8 +58,8 @@ void main() {
 //   bootstrap(ticksApi: ticksApi);
 // }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TicksApp extends StatelessWidget {
+  const TicksApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +92,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
 class StartAChecklistView extends StatelessWidget {
 
   const StartAChecklistView({super.key});
@@ -66,9 +100,10 @@ class StartAChecklistView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
-    return Scaffold(
-        appBar: AppBar(
+    return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
             title: Text(
               'Start a new checklist',
@@ -93,23 +128,23 @@ class StartAChecklistView extends StatelessWidget {
                   ),
                 ),
               ),
-        ),
-        ),
-        body: const SingleChildScrollView(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              children: [
-                Blueprint(title: 'Ambulance check'),
-                Blueprint(title: 'Radio check'),
-                Blueprint(title: 'Response bag check'),
-              ],
             ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          tooltip: 'Start a checklist',
-          child: const Icon(Icons.add),
-        ),
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              children: state.blueprints.map(
+                      (item) => BlueprintWidget(data: item),
+              ).toList(),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {},
+            tooltip: 'Start a checklist',
+            child: const Icon(Icons.add),
+          ),
+        );
+      },
     );
   }
 }
@@ -193,10 +228,10 @@ class OpenChecklists extends StatelessWidget {
   }
 }
 
-class Blueprint extends StatelessWidget {
-  const Blueprint({required this.title, super.key});
+class BlueprintWidget extends StatelessWidget {
+  const BlueprintWidget({required this.data, super.key});
 
-  final String title;
+  final Blueprint data;
 
   @override
   Widget build(BuildContext context) {
@@ -207,7 +242,7 @@ class Blueprint extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 18),
           child: Icon(Icons.checklist),
         ),
-        Text(title, style: Theme.of(context).textTheme.bodyLarge,),
+        Text(data.title, style: Theme.of(context).textTheme.bodyLarge,),
       ],),
     );
   }
@@ -224,8 +259,8 @@ class SuggestedBlueprints extends StatelessWidget {
           'Suggested cheklists',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
-        const Blueprint(title: 'Report an issue'),
-        const Blueprint(title: 'Log a radio check'),
+        //const BlueprintWidget(title: 'Report an issue'),
+        //const BlueprintWidget(title: 'Log a radio check'),
       ],
     );
   }

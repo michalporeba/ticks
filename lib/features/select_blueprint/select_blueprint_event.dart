@@ -1,5 +1,10 @@
 part of 'select_blueprint_bloc.dart';
 
-sealed class SelectBlueprintEvent {}
+sealed class SelectBlueprintEvent extends Equatable {
+  const SelectBlueprintEvent();
 
-class LoadBlueprints extends SelectBlueprintEvent {}
+  @override
+  List<Object> get props => [];
+}
+
+class RequestedBlueprints extends SelectBlueprintEvent {}

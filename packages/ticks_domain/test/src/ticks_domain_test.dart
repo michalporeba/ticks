@@ -10,7 +10,7 @@ void main() {
   });
   group('Checklist', () {
     test('can be instantiated', () {
-      const blueprint = Blueprint(title: 'test');
+      const blueprint = Blueprint(id: '1', title: 'test');
       expect(Checklist(blueprintId: blueprint.id, title: 'test'), isNotNull);
     });
   });
