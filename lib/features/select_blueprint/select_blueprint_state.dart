@@ -1,5 +1,9 @@
 part of 'select_blueprint_bloc.dart';
 
+import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
+import 'package:ticks_domain/ticks_domain.dart';
+
 @immutable
 class SelectBlueprintState extends Equatable {
   const SelectBlueprintState({

@@ -18,11 +18,14 @@ dependencies:
   intl: ^0.19.0
   local_ticks_api:
     path: packages/local_ticks_api
+  meta: ^1.7.0
   shared_preferences: ^2.2.2
   ticks_api:
     path: packages/ticks_api
   ticks_repository:
     path: packages/ticks_repository
+  ticks_domain:
+    path: packages/ticks_domain
 
 dev_dependencies:
   bloc_test: ^9.1.0

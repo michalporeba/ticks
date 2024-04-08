@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:rxdart/subjects.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:ticks_api/src/model/blueprint.dart';
-import 'package:ticks_api/src/model/checklist.dart';
 import 'package:ticks_api/ticks_api.dart';
 
 /// {@template local_ticks_api}
@@ -19,8 +17,10 @@ class LocalTicksApi extends TicksApi {
 
   final SharedPreferences _plugin;
 
-  final _blueprintsStreamController = BehaviorSubject<List<Blueprint>>.seeded(const []);
-  final _checklistsStreamController = BehaviorSubject<List<Checklist>>.seeded(const []);
+  final _blueprintsStreamController
+    = BehaviorSubject<List<Blueprint>>.seeded(const []);
+  final _checklistsStreamController
+    = BehaviorSubject<List<Checklist>>.seeded(const []);
 
   static const blueprintsCollectionKey = '__blueprints_collection_key__';
   static const checklistsCollectionKey = '__checklists_collection_key__';
@@ -35,7 +35,7 @@ class LocalTicksApi extends TicksApi {
       final blueprints = List<Map<dynamic, dynamic>>.from(
         json.decode(blueprintsJson) as List,
       )
-          .map((jsonMap) => Blueprint.fromJson(Map<String, dynamic>.from(jsonMap)))
+          .map((json) => Blueprint.fromJson(Map<String, dynamic>.from(json)))
           .toList();
           _blueprintsStreamController.add(blueprints);
     }
@@ -45,15 +45,17 @@ class LocalTicksApi extends TicksApi {
       final checklists = List<Map<dynamic, dynamic>>.from(
         json.decode(checklistsJson) as List,
       )
-          .map((jsonMap) => Checklist.fromJson(Map<String, dynamic>.from(jsonMap)))
+          .map((json) => Checklist.fromJson(Map<String, dynamic>.from(json)))
           .toList();
           _checklistsStreamController.add(checklists);
     }
   }
 
   @override
-  Stream<List<Checklist>> getActiveChecklists() => _checklistsStreamController.asBroadcastStream();
+  Stream<List<Checklist>> getActiveChecklists()
+  => _checklistsStreamController.asBroadcastStream();
 
   @override
-  Stream<List<Blueprint>> getBlueprints() => _blueprintsStreamController.asBroadcastStream();
+  Stream<List<Blueprint>> getBlueprints()
+  => _blueprintsStreamController.asBroadcastStream();
 }
