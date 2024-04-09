@@ -1,37 +1,26 @@
 import 'package:flutter/material.dart';
 
-class TicksAppBar extends StatelessWidget implements PreferredSizeWidget {
-  TicksAppBar({
-    required this.title,
-    this.onBack,
-    this.onSearch,
-    super.key,
-  });
-
-  final String title;
-  final VoidCallback? onBack;
-  final void Function(String)? onSearch;
-  late AppBar? appBar;
-
-  @override
-  Widget build(BuildContext context) {
+class TicksAppBar {
+  static AppBar create({
+    required BuildContext context,
+    required String title,
+    VoidCallback? onBack,
+    void Function(String)? onSearch,
+  }) {
     final theme = Theme.of(context);
-
-    appBar = AppBar(
+    return AppBar(
       backgroundColor: theme.primaryColor,
-      leading: _createBackButton(),
-      title: _createTitle(theme),
+      leading: _createBackButton(onBack),
+      title: _createTitle(theme, title),
       actions: [IconButton(
-              onPressed:(){},
-              icon: const Icon(Icons.settings),),
-            ],
-      bottom: _createSearch(theme),
+        onPressed:(){},
+        icon: const Icon(Icons.settings),),
+      ],
+      bottom: _createSearch(theme, onSearch),
     );
-
-    return appBar!;
   }
 
-  Widget? _createBackButton() {
+  static Widget? _createBackButton(VoidCallback? onBack) {
     if (onBack == null) {
       return null;
     }
@@ -41,14 +30,16 @@ class TicksAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _createTitle(ThemeData theme) {
+  static Widget _createTitle(ThemeData theme, String title) {
     return Text(
       title,
       style: theme.textTheme.titleLarge,
     );
   }
 
-  PreferredSizeWidget _createSearch(ThemeData theme) {
+  static PreferredSizeWidget _createSearch(
+      ThemeData theme,
+      void Function(String)? onSearch,) {
     if (onSearch == null) {
       return const PreferredSize(
         preferredSize: Size.zero,
@@ -73,8 +64,4 @@ class TicksAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize
-  => appBar?.preferredSize ?? Size.zero;
 }

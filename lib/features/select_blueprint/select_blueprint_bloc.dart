@@ -21,11 +21,15 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
       blueprints: [
         const Blueprint(
           id: '1',
-          title: 'Blueprint 1',
+          title: 'Ambulance',
         ),
         const Blueprint(
           id: '2',
-          title: 'Blueprint 2',
+          title: 'Responder Bag',
+        ),
+        const Blueprint(
+          id: '3',
+          title: 'Radio',
         ),
       ],
     ),);

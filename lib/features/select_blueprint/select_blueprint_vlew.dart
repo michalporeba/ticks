@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ticks/entities/blueprint/blueprint.dart';
-import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
+import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class StartAChecklistView extends StatelessWidget {
@@ -14,11 +13,15 @@ class StartAChecklistView extends StatelessWidget {
     return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: TicksAppBar(
+          appBar: TicksAppBar.create(
+            context: context,
             title: 'Start a checklist',
             onBack: (){},
-            onSearch: (query) {},
+            onSearch: (query) {}
           ),
+          // appBar: TicksAppBar(
+          //   ,
+          // ),
           body: Column(
             children: [
               SingleChildScrollView(
