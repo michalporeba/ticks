@@ -13,7 +13,7 @@ class StartAChecklistView extends StatelessWidget {
     return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: TicksAppBar.create(
+          appBar: createAppBar(
             context: context,
             title: 'Start a checklist',
             onBack: (){},
