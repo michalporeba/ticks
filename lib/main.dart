@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:ticks/entities/blueprint/blueprint.dart';
+import 'package:ticks/app/app_theme.dart';
+
 import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
+import 'package:ticks/features/select_blueprint/select_blueprint_vlew.dart';
 
 void main() {
   // TODO(michal): repositories will have to be created here.
@@ -65,24 +66,7 @@ class TicksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Checklists',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: const ColorScheme(
-              brightness: Brightness.light,
-              background: Color(0xfffff7ab),
-              onBackground: Color(0xff222222),
-              surface: Color(0xfffff7ab),
-              onSurface: Color(0xff222222),
-              error: Colors.red,
-              onError: Colors.white,
-              primary: Color(0xfffeb605),
-              onPrimary: Color(0xff000000),
-              secondary: Color(0xff03a475),
-              onSecondary: Color(0xffffffff),
-
-          ),
-          textTheme: GoogleFonts.heeboTextTheme(),
-        ),
+      theme: AppTheme.sjac,
       initialRoute: StartAChecklistView.id,
       routes: {
         StartAChecklistView.id: (context) => const StartAChecklistView(),
@@ -91,65 +75,6 @@ class TicksApp extends StatelessWidget {
     );
   }
 }
-
-class StartAChecklistView extends StatelessWidget {
-
-  const StartAChecklistView({super.key});
-  static String id = 'startAChecklist';
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(
-      builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).primaryColor,
-            title: Text(
-              'Start a new checklist',
-              style: textTheme.headlineLarge,
-            ),
-            actions: [IconButton(
-              onPressed:(){},
-              icon: const Icon(Icons.settings),),
-            ],
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(64),
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: Container(
-                      margin: const EdgeInsets.all(4),
-                      child: const Icon(Icons.filter_alt_outlined),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          body: SingleChildScrollView(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              children: state.blueprints.map(
-                      (item) => BlueprintWidget(data: item),
-              ).toList(),
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            tooltip: 'Start a checklist',
-            child: const Icon(Icons.add),
-          ),
-        );
-      },
-    );
-  }
-}
-
-
 
 class CurrentCheckListsPage extends StatelessWidget {
   const CurrentCheckListsPage({super.key});
@@ -224,26 +149,6 @@ class OpenChecklists extends StatelessWidget {
         const Checklist(title: 'Ambulance HK 105'),
         const Checklist(title: 'Handheld radio HK 423'),
       ],
-    );
-  }
-}
-
-class BlueprintWidget extends StatelessWidget {
-  const BlueprintWidget({required this.data, super.key});
-
-  final Blueprint data;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8),
-      child: Row(children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 18),
-          child: Icon(Icons.checklist),
-        ),
-        Text(data.title, style: Theme.of(context).textTheme.bodyLarge,),
-      ],),
     );
   }
 }
