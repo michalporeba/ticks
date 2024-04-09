@@ -66,7 +66,7 @@ class TicksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Checklists',
-      theme: AppTheme.sjac,
+      theme: AppTheme.sjac(context),
       initialRoute: StartAChecklistView.id,
       routes: {
         StartAChecklistView.id: (context) => const StartAChecklistView(),

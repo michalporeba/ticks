@@ -17,8 +17,8 @@ class StartAChecklistView extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
             title: Text(
-              'Start a new checklist',
-              style: textTheme.headlineLarge,
+              'Start a checklist',
+              style: textTheme.headlineMedium,
             ),
             actions: [IconButton(
               onPressed:(){},

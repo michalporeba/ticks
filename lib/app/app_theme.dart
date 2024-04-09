@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static ThemeData get sjac {
+  static ThemeData sjac(BuildContext context) {
     return ThemeData(
       useMaterial3: true,
       colorScheme: const ColorScheme(
@@ -19,7 +19,9 @@ class AppTheme {
           onSecondary: Color(0xffffffff),
 
       ),
-      textTheme: GoogleFonts.heeboTextTheme(),
+      textTheme: GoogleFonts.heeboTextTheme(
+        Theme.of(context).textTheme.apply(fontSizeFactor: 1.5),
+      ),
     );
   }
 }
