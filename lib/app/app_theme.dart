@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static double scaleFactor = 1.5;
+  static double scaleFactor = 1.4;
   static double defaultIconSize = 24;
 
   static ThemeData sjac(BuildContext context) {
     final base = ThemeData.light();
-
     return ThemeData(
       useMaterial3: true,
       appBarTheme: base.appBarTheme.copyWith(

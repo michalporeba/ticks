@@ -16,9 +16,13 @@ class StartAChecklistView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
+            leading: IconButton(
+              onPressed: (){},
+              icon: const Icon(Icons.arrow_left)
+            ),
             title: Text(
               'Start a checklist',
-              style: textTheme.headlineMedium,
+              style: textTheme.titleLarge,
             ),
             actions: [IconButton(
               onPressed:(){},
@@ -43,32 +47,21 @@ class StartAChecklistView extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    children: state.blueprints.map(
-                            (item) => BlueprintWidget(data: item),
-                    ).toList(),
-                  ),
+              SingleChildScrollView(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  children: state.blueprints.map(
+                          (item) => BlueprintWidget(data: item),
+                  ).toList(),
                 ),
               ),
-              ElevatedButton(
-                onPressed: (){},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white
-                ),
-                child: const Text("Hello"),
-              ),
-              const SizedBox(height: 16,),
             ],
           ),
           floatingActionButton: FloatingActionButton.extended(
             onPressed: () {},
             tooltip: 'Start a checklist',
-            icon: const Icon(Icons.add),
-            label: const Text('test'),
+            icon: const Icon(Icons.camera_alt_outlined),
+            label: const Text('Scan a QR code'),
           ),
         );
       }
@@ -90,7 +83,7 @@ class BlueprintWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 18),
           child: Icon(Icons.checklist),
         ),
-        Text(data.title, style: Theme.of(context).textTheme.bodyLarge,),
+        Text(data.title, style: Theme.of(context).textTheme.headlineMedium,),
       ],),
     );
   }
