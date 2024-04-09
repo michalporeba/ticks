@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/entities/blueprint/blueprint.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
+import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class StartAChecklistView extends StatelessWidget {
 
@@ -10,40 +11,13 @@ class StartAChecklistView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).primaryColor,
-            leading: IconButton(
-              onPressed: (){},
-              icon: const Icon(Icons.arrow_left)
-            ),
-            title: Text(
-              'Start a checklist',
-              style: textTheme.titleLarge,
-            ),
-            actions: [IconButton(
-              onPressed:(){},
-              icon: const Icon(Icons.settings),),
-            ],
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(64),
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: Container(
-                      margin: const EdgeInsets.all(4),
-                      child: const Icon(Icons.filter_alt_outlined),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+          appBar: TicksAppBar(
+            title: 'Start a checklist',
+            onBack: (){},
+            onSearch: (query) {},
           ),
           body: Column(
             children: [
@@ -64,7 +38,7 @@ class StartAChecklistView extends StatelessWidget {
             label: const Text('Scan a QR code'),
           ),
         );
-      }
+      },
     );
   }
 }

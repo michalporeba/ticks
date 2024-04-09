@@ -10,7 +10,7 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       appBarTheme: base.appBarTheme.copyWith(
-        iconTheme: IconThemeData(size: defaultIconSize * scaleFactor)
+        iconTheme: IconThemeData(size: defaultIconSize * scaleFactor,),
       ),
       colorScheme: const ColorScheme(
           brightness: Brightness.light,
