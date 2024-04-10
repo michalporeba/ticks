@@ -36,14 +36,12 @@ Widget _createTitle(ThemeData theme, String title) {
   );
 }
 
-PreferredSizeWidget _createSearch(
+PreferredSizeWidget? _createSearch(
     ThemeData theme,
-    void Function(String)? onSearch,) {
+    void Function(String)? onSearch,
+) {
   if (onSearch == null) {
-    return const PreferredSize(
-      preferredSize: Size.zero,
-      child: Placeholder(),
-    );
+    return null;
   }
 
   return PreferredSize(
