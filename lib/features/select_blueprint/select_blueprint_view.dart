@@ -16,7 +16,7 @@ class SelectBlueprintPage extends StatelessWidget {
           appBar: createAppBar(
             context: context,
             title: 'Start a checklist',
-            onSearch: (query) {}
+            onSearch: (query) {},
           ),
           // appBar: TicksAppBar(
           //   ,

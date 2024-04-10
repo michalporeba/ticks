@@ -8,8 +8,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       appBar: createAppBar(
         context: context,
@@ -27,26 +25,29 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: FloatingActionButton(
+            child: FloatingActionButton.extended(
               onPressed: () {
                 Navigator.pushNamed(context, SelectBlueprintPage.id);
               },
-              tooltip: 'Start a checklist',
-              child: const Icon(Icons.add),
+              backgroundColor: Theme.of(context).canvasColor,
+              label: const Text('Do something else'),
+              icon: const Icon(Icons.question_mark_outlined),
             ),
           ),
 
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
-            child: FloatingActionButton(
+            child: FloatingActionButton.extended(
+              heroTag: null,
               onPressed: () {
-              Navigator.pushNamed(context, SelectBlueprintPage.id);
+                Navigator.pushNamed(context, SelectBlueprintPage.id);
               },
-              tooltip: 'Start a checklist',
-              child: const Icon(Icons.multiline_chart),
+              label: const Text('Start a checklist'),
+              icon: const Icon(Icons.start_outlined),
             ),
           ),
         ],
