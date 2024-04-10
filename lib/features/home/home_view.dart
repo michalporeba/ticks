@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -25,7 +26,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, SelectBlueprintPage.id);
+        },
         tooltip: 'Start a checklist',
         child: const Icon(Icons.add),
       ),

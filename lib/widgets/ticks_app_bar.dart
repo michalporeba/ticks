@@ -3,29 +3,17 @@ import 'package:flutter/material.dart';
 AppBar createAppBar({
   required BuildContext context,
   required String title,
-  VoidCallback? onBack,
   void Function(String)? onSearch,
 }) {
   final theme = Theme.of(context);
   return AppBar(
     backgroundColor: theme.primaryColor,
-    leading: _createBackButton(onBack),
     title: _createTitle(theme, title),
     actions: [IconButton(
       onPressed:(){},
       icon: const Icon(Icons.settings),),
     ],
     bottom: _createSearch(theme, onSearch),
-  );
-}
-
-Widget? _createBackButton(VoidCallback? onBack) {
-  if (onBack == null) {
-    return null;
-  }
-  return IconButton(
-    onPressed: onBack,
-    icon: const Icon(Icons.arrow_back),
   );
 }
 
