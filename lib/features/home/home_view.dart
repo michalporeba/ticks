@@ -25,12 +25,31 @@ class HomePage extends StatelessWidget {
 
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, SelectBlueprintPage.id);
-        },
-        tooltip: 'Start a checklist',
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, SelectBlueprintPage.id);
+              },
+              tooltip: 'Start a checklist',
+              child: const Icon(Icons.add),
+            ),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: FloatingActionButton(
+              onPressed: () {
+              Navigator.pushNamed(context, SelectBlueprintPage.id);
+              },
+              tooltip: 'Start a checklist',
+              child: const Icon(Icons.multiline_chart),
+            ),
+          ),
+        ],
       ),
     );
   }
