@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
-class StartAChecklistView extends StatelessWidget {
+class SelectBlueprintPage extends StatelessWidget {
 
-  const StartAChecklistView({super.key});
+  const SelectBlueprintPage({super.key});
   static String id = 'startAChecklistView';
 
   @override

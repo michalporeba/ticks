@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/app/app_theme.dart';
 import 'package:ticks/features/home/home_view.dart';
-import 'package:ticks/features/select_blueprint/select_blueprint_bloc.dart';
-import 'package:ticks/features/select_blueprint/select_blueprint_vlew.dart';
+import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
 void main() {
   // TODO(michal): repositories will have to be created here.
@@ -56,10 +55,10 @@ class TicksApp extends StatelessWidget {
     return MaterialApp(
       title: 'Checklists',
       theme: AppTheme.sjac(context),
-      initialRoute: CurrentCheckListsPage.id,
+      initialRoute: HomePage.id,
       routes: {
-        StartAChecklistView.id: (context) => const StartAChecklistView(),
-        CurrentCheckListsPage.id: (context) => const CurrentCheckListsPage(),
+        SelectBlueprintPage.id: (context) => const SelectBlueprintPage(),
+        HomePage.id: (context) => const HomePage(),
       },
     );
   }

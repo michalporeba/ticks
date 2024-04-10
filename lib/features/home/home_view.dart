@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
-class CurrentCheckListsPage extends StatelessWidget {
-  const CurrentCheckListsPage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
   static String id = 'currentCheckLists';
 
   @override
