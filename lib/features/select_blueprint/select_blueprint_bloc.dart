@@ -10,11 +10,11 @@ class SelectBlueprintBloc
 extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
   
   SelectBlueprintBloc() : super(const SelectBlueprintState()) {
-    on<RequestedBlueprints>(_onLoadBlueprints);
+    on<LoadedSelectBlueprint>(_onLoad);
   }
 
-  Future<void> _onLoadBlueprints(
-    RequestedBlueprints event,
+  Future<void> _onLoad(
+    LoadedSelectBlueprint event,
     Emitter<SelectBlueprintState> emit,
   ) async {
     emit(state.copyWith(

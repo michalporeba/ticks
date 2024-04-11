@@ -9,11 +9,11 @@ void main() {
   // TODO(michal): repositories will have to be created here.
   // they will have to be provided to TicksApp through the constructor.
   final blueprintBlocProvider = BlocProvider(
-    create: (ctx) => SelectBlueprintBloc()..add(RequestedBlueprints()),
+    create: (ctx) => SelectBlueprintBloc()..add(LoadedSelectBlueprint()),
   );
 
   final homeBlocProvider = BlocProvider(
-    create: (ctx) => HomeBloc()
+    create: (ctx) => HomeBloc()..add(LoadedHome()),
   );
 
   runApp(AppWithProviders(

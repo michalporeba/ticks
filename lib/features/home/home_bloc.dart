@@ -9,11 +9,11 @@ part 'home_state.dart';
 class HomeBloc
 extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(const HomeState()) {
-    on<RequestedHome>(_onLoad);
+    on<LoadedHome>(_onLoad);
   }
 
   Future<void> _onLoad(
-    RequestedHome event,
+    LoadedHome event,
     Emitter<HomeState> emit,
   ) async {
     emit(state);
