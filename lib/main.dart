@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/app/app_theme.dart';
+import 'package:ticks/features/home/home.dart';
 import 'package:ticks/features/home/home_view.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
 void main() {
   // TODO(michal): repositories will have to be created here.
   // they will have to be provided to TicksApp through the constructor.
-  final selectBlueprintBlocProvider = BlocProvider(
+  final blueprintBlocProvider = BlocProvider(
     create: (ctx) => SelectBlueprintBloc()..add(RequestedBlueprints()),
+  );
+
+  final homeBlocProvider = BlocProvider(
+    create: (ctx) => HomeBloc()
   );
 
   runApp(AppWithProviders(
     app: const TicksApp(),
     blocProviders: [ // globally accessible blocs
-      selectBlueprintBlocProvider,
+      blueprintBlocProvider,
+      homeBlocProvider,
     ],
     repositoryProviders: const [],
     ),

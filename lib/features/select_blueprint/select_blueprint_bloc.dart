@@ -19,15 +19,15 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
   ) async {
     emit(state.copyWith(
       blueprints: [
-        const Blueprint(
+        Blueprint(
           id: '1',
           title: 'Ambulance',
         ),
-        const Blueprint(
+        Blueprint(
           id: '2',
           title: 'Responder Bag',
         ),
-        const Blueprint(
+        Blueprint(
           id: '3',
           title: 'Radio',
         ),

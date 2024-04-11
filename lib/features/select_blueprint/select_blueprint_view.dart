@@ -19,9 +19,6 @@ class SelectBlueprintPage extends StatelessWidget {
             title: 'Start a checklist',
             onSearch: (query) {},
           ),
-          // appBar: TicksAppBar(
-          //   ,
-          // ),
           body: Column(
             children: [
               SingleChildScrollView(

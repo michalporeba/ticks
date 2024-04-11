@@ -1,6 +1,12 @@
-import 'package:equatable/equatable.dart';
+import 'package:ticks/entities/blueprint/blueprint.dart';
 
-class BlueprintRepository extends Equatable{
-  @override
-  List<Object?> get props => [];
- }
+class BlueprintRepository {
+  Stream<List<Blueprint>> getBlueprints() {
+    return Stream.fromIterable([
+      [
+        Blueprint(title: 'Ambulance'),
+        Blueprint(title: 'Handheld radio'),
+      ],
+    ]);
+  }
+}
