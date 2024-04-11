@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
+import 'package:ticks/widgets/floating_actions.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class SelectBlueprintPage extends StatelessWidget {
@@ -33,11 +34,14 @@ class SelectBlueprintPage extends StatelessWidget {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton.extended(
-            onPressed: () {},
-            tooltip: 'Start a checklist',
-            icon: const Icon(Icons.camera_alt_outlined),
-            label: const Text('Scan a QR code'),
+          floatingActionButton: FloatingActionButtons(
+            actions: [
+              FloatingActionData(
+                icon: Icons.camera_alt_outlined,
+                label: 'Scan a QR code',
+                onPressed: () {},
+              ),
+            ],
           ),
         );
       },

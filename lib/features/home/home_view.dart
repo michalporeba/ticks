@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
+import 'package:ticks/widgets/floating_actions.dart';
 import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class HomePage extends StatelessWidget {
@@ -20,35 +21,21 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 16),
             SuggestedBlueprints(),
           ],
-
         ),
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: FloatingActionButton.extended(
-              onPressed: () {
-                Navigator.pushNamed(context, SelectBlueprintPage.id);
-              },
-              backgroundColor: Theme.of(context).canvasColor,
-              label: const Text('Do something else'),
-              icon: const Icon(Icons.question_mark_outlined),
-            ),
+      floatingActionButton: FloatingActionButtons(
+        actions: [
+          FloatingActionData(
+            icon: Icons.checklist,
+            label: 'Start a checklist',
+            onPressed: () {
+              Navigator.pushNamed(context, SelectBlueprintPage.id);
+            },
           ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: FloatingActionButton.extended(
-              heroTag: null,
-              onPressed: () {
-                Navigator.pushNamed(context, SelectBlueprintPage.id);
-              },
-              label: const Text('Start a checklist'),
-              icon: const Icon(Icons.start_outlined),
-            ),
+          FloatingActionData(
+            label: 'Do something else',
+            icon: Icons.question_mark_outlined,
+            onPressed: (){},
           ),
         ],
       ),
