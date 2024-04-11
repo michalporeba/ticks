@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/app/app_theme.dart';
 import 'package:ticks/features/home/home.dart';
-import 'package:ticks/features/home/home_view.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
 void main() {
