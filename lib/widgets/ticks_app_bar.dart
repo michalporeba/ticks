@@ -10,7 +10,7 @@ AppBar createAppBar({
     backgroundColor: theme.primaryColor,
     title: _createTitle(theme, title),
     actions: [IconButton(
-      onPressed:(){},
+      onPressed: () {},
       icon: const Icon(Icons.settings),),
     ],
     bottom: _createSearch(theme, onSearch),
@@ -45,6 +45,7 @@ PreferredSizeWidget? _createSearch(
             child: const Icon(Icons.filter_alt_outlined),
           ),
         ),
+        onChanged: (query) => onSearch(query),
       ),
     ),
   );

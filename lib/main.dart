@@ -12,12 +12,11 @@ void main() {
 
   final blueprintBlocProvider = BlocProvider(
     create: (ctx) => SelectBlueprintBloc(
-      blueprintRepository: blueprintRepository,)
-    ..add(LoadedSelectBlueprint()),
+      blueprintRepository: blueprintRepository,),
   );
 
   final homeBlocProvider = BlocProvider(
-    create: (ctx) => HomeBloc()..add(LoadedHome()),
+    create: (ctx) => HomeBloc(),
   );
 
   runApp(AppWithProviders(
