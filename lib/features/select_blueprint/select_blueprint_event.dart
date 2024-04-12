@@ -8,6 +8,7 @@ sealed class SelectBlueprintEvent extends Equatable {
 }
 
 class LoadedSelectBlueprint extends SelectBlueprintEvent {}
+
 class SearchedBlueprints extends SelectBlueprintEvent {
   const SearchedBlueprints(this.query);
 

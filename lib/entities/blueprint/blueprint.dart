@@ -36,6 +36,13 @@ class Blueprint extends Equatable {
     );
   }
 
+  bool matchesQuery(String query) {
+    if (query.isEmpty) return true;
+
+    final pattern = RegExp(r'\b' + RegExp.escape(query.toLowerCase()));
+    return pattern.hasMatch(title.toLowerCase());
+  }
+
   static Blueprint fromJson(JsonMap json) => _$BlueprintFromJson(json);
 
   /// Converts this [Blueprint] into a [JsonMap].

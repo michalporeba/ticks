@@ -43,8 +43,7 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
       (blueprints) {
         emit(state.copyWith(
           blueprints: blueprints.where(
-            (blueprint) =>
-              event.query.isEmpty || blueprint.title.contains(event.query),
+            (blueprint) => blueprint.matchesQuery(event.query),
           ).toList(),
           ),
         );
