@@ -38,7 +38,6 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     SearchedBlueprints event,
     Emitter<SelectBlueprintState> emit,
   ) async {
-    print('Handling SearchBlueprints event');
     blueprintRepository.getBlueprints().listen(
       (blueprints) {
         emit(state.copyWith(

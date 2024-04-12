@@ -43,6 +43,6 @@ class HomePage extends StatelessWidget {
 
   Widget _nothingToSee(BuildContext context) {
     return const Center(
-        child: Text('You do not have any open checklists'));
+        child: Text('You do not have any open checklists'),);
   }
 }

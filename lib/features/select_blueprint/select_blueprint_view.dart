@@ -18,7 +18,6 @@ class SelectBlueprintPage extends StatelessWidget {
             context: context,
             title: 'Start a checklist',
             onSearch: (query) {
-              print('searched bar triggered');
               BlocProvider
                 .of<SelectBlueprintBloc>(context)
                 .add(SearchedBlueprints(query));
