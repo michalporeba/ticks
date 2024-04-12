@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:ticks/entities/json_map.dart';
-import 'package:uuid/uuid.dart';
 
 part 'blueprint.g.dart';
 
@@ -10,15 +9,12 @@ part 'blueprint.g.dart';
 @JsonSerializable()
 class Blueprint extends Equatable {
   /// {@macro blueprint}
-  Blueprint({
+  const Blueprint({
+    required this.id,
     required this.title,
-    String? id,
     this.description = '',
     this.version = '0.0.0',
-  }) : assert(
-    id != null,
-    "Blueprint's ID must either be null or not empty!",
-  ), id = id ?? const Uuid().v4();
+  });
 
   final String id;
   final String title;

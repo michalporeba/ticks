@@ -8,7 +8,7 @@ part of 'blueprint.dart';
 
 Blueprint _$BlueprintFromJson(Map<String, dynamic> json) => Blueprint(
       title: json['title'] as String,
-      id: json['id'] as String?,
+      id: json['id'] as String,
       description: json['description'] as String? ?? '',
       version: json['version'] as String? ?? '0.0.0',
     );
