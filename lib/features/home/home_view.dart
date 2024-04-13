@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _createBody(BuildContext context, HomeState state) {
-    if (state.currentChecklist == null) {
+    if (state.checklist == null) {
       return _nothingToSee(context);
     }
     return const Placeholder();

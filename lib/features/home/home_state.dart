@@ -3,19 +3,23 @@ part of 'home_bloc.dart';
 @immutable
 class HomeState extends Equatable {
   const HomeState({
-    this.currentChecklist,
+    this.checklist,
+    this.checklists = const <Checklist>[],
   });
 
-  final Checklist? currentChecklist;
+  final Checklist? checklist;
+  final List<Checklist> checklists;
 
   HomeState copyWith({
-    Checklist? currentChecklist,
+    Checklist? checklist,
+    List<Checklist>? checklists,
   }) {
     return HomeState(
-      currentChecklist: currentChecklist ?? this.currentChecklist,
+      checklist: checklist ?? this.checklist,
+      checklists: checklists ?? this.checklists,
     );
   }
 
   @override
-  List<Object?> get props => [currentChecklist];
+  List<Object?> get props => [checklist, checklists];
 }
