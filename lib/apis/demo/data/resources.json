@@ -1,0 +1,14 @@
+[
+  {
+    "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
+    "id": "a112ede4-fa03-4d6d-9214-3434eca08160",
+    "type": "vehicle",
+    "label": "HK 105"
+  },
+  {
+    "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
+    "id": "45a3f340-5b28-4e7f-b82d-681ff4fb6baa",
+    "type": "vehicle",
+    "label": "HK 102"
+  }
+]
