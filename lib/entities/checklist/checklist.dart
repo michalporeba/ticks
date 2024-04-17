@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
+import 'package:ticks/entities/blueprint/blueprint.dart';
 import 'package:ticks/entities/json_map.dart';
+import 'package:uuid/uuid.dart';
 
 part 'checklist.g.dart';
 
@@ -10,23 +12,35 @@ part 'checklist.g.dart';
 class Checklist extends Equatable {
   /// {@macro checklist}
   const Checklist({
-    required this.blueprintId,
+    required this.blueprint,
+    required this.id,
+    required this.org,
     required this.title,
-    this.id = '',
   });
 
+  factory Checklist.from({
+    required Blueprint blueprint,
+  }) {
+    return Checklist(
+      blueprint: blueprint,
+      id: const Uuid().v4(),
+      org: blueprint.org,
+      title: blueprint.title,
+    );
+  }
+
+  final String org;
   final String id;
-  final String blueprintId;
+  final Blueprint blueprint;
   final String title;
 
   Checklist copyWith({
-    String? id,
-    String? blueprintId,
     String? title,
   }) {
     return Checklist(
-      id: id ?? this.id,
-      blueprintId: blueprintId ?? this.blueprintId,
+      org: org,
+      id: id,
+      blueprint: blueprint,
       title: title ?? this.title,
     );
   }
@@ -35,5 +49,5 @@ class Checklist extends Equatable {
   JsonMap toJson() => _$ChecklistToJson(this);
 
   @override
-  List<Object> get props => [id, blueprintId, title];
+  List<Object> get props => [org, id, blueprint, title];
 }

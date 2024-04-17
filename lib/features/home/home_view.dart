@@ -24,6 +24,9 @@ class HomePage extends StatelessWidget {
                 icon: Icons.checklist,
                 label: 'Start a checklist',
                 onPressed: () {
+                  BlocProvider
+                    .of<SelectBlueprintBloc>(context)
+                    .add(RequestedBlueprints());
                   Navigator.pushNamed(context, SelectBlueprintPage.id);
                 },
               ),

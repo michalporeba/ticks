@@ -7,13 +7,15 @@ part of 'checklist.dart';
 // **************************************************************************
 
 Checklist _$ChecklistFromJson(Map<String, dynamic> json) => Checklist(
-      blueprintId: json['blueprintId'] as String,
+      blueprint: Blueprint.fromJson(json['blueprint'] as Map<String, dynamic>),
+      id: json['id'] as String,
+      org: json['org'] as String,
       title: json['title'] as String,
-      id: json['id'] as String? ?? '',
     );
 
 Map<String, dynamic> _$ChecklistToJson(Checklist instance) => <String, dynamic>{
+      'org': instance.org,
       'id': instance.id,
-      'blueprintId': instance.blueprintId,
+      'blueprint': instance.blueprint,
       'title': instance.title,
     };

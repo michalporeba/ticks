@@ -16,6 +16,7 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
   }) : super(const SelectBlueprintState()) {
     on<LoadedBlueprints>(_onLoad);
     on<SearchedBlueprints>(_onSearch);
+    on<RequestedBlueprints>(_onRequested);
 
     blueprintRepository.getBlueprints().listen((blueprints) {
       add(LoadedBlueprints(blueprints: blueprints));
@@ -23,6 +24,13 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
   }
 
   final BlueprintRepository blueprintRepository;
+
+  Future<void> _onRequested(
+    RequestedBlueprints event,
+    Emitter<SelectBlueprintState> emit,
+  ) async {
+    emit(state.copyWith(query: ''));
+  }
 
   Future<void> _onLoad(
     LoadedBlueprints event,
