@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
+
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:ticks/entities/blueprint/blueprint.dart';
 import 'package:ticks/entities/blueprint/blueprint_api.dart';
-import 'package:ticks/entities/json_map.dart';
 
 class DemoBlueprintApi implements BlueprintApi {
   @override
@@ -11,18 +11,15 @@ class DemoBlueprintApi implements BlueprintApi {
   }
 
   @override
-  Stream<Blueprint> getBlueprints() async* {
-    final directory = Directory('blueprints');
+  Future<List<Blueprint>> getBlueprints() async {
+    final jsonString = await rootBundle.loadString('lib/apis/demo/data/blueprints.json');
 
-    await for (final file in directory.list()) {
-      if (file is! File) {
-        continue;
-      }
+    final blueprints = List<Map<dynamic, dynamic>>.from(
+        json.decode(jsonString) as List,
+    )
+    .map((json) => Blueprint.fromJson(Map<String, dynamic>.from(json)))
+    .toList();
 
-      final data = await file.readAsString();
-      final jsonData = json.decode(data) as JsonMap;
-      yield Blueprint.fromJson(jsonData);
-    }
+    return Future.value(blueprints);
   }
-
 }

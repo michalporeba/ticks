@@ -24,7 +24,7 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     LoadedSelectBlueprint event,
     Emitter<SelectBlueprintState> emit,
   ) async {
-    await blueprintRepository.getBlueprints().listen(
+    blueprintRepository.getBlueprints().listen(
       (blueprints) {
         emit(state.copyWith(
           blueprints: blueprints,
