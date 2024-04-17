@@ -28,10 +28,12 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     LoadedBlueprints event,
     Emitter<SelectBlueprintState> emit,
   ) async {
+    final orderedBlueprints = event.blueprints
+                                   .toList()
+                                   ..sort((a, b) => a.title.compareTo(b.title));
+
     emit(state.copyWith(
-      blueprints: event.blueprints.where(
-        (blueprint) => blueprint.matches(state.query),
-        ).toList(),
+      allBlueprints: orderedBlueprints,
     ),);
   }
 

@@ -10,12 +10,14 @@ part 'blueprint.g.dart';
 class Blueprint extends Equatable {
   /// {@macro blueprint}
   const Blueprint({
+    required this.org,
     required this.id,
     required this.title,
     this.description = '',
     this.version = '0.0.0',
   });
 
+  final String org;
   final String id;
   final String title;
   final String description;
@@ -23,13 +25,13 @@ class Blueprint extends Equatable {
 
   /// {@macro blueprint}
   Blueprint copyWith({
-    String? id,
     String? title,
     String? description,
     String? version,
   }) {
     return Blueprint(
-      id: id ?? this.id,
+      org: org,
+      id: id,
       title: title ?? this.title,
       description: description ?? this.description,
       version: version ?? this.version,

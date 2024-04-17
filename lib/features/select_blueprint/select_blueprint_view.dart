@@ -28,8 +28,8 @@ class SelectBlueprintPage extends StatelessWidget {
               SingleChildScrollView(
                 padding: const EdgeInsets.all(8),
                 child: Column(
-                  children: state.filteredBlueprints.map(
-                          (item) => BlueprintWidget(data: item),
+                  children: state.blueprints.map(
+                          (blueprint) => BlueprintWidget(data: blueprint),
                   ).toList(),
                 ),
               ),

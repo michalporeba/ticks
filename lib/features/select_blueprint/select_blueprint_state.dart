@@ -3,25 +3,25 @@ part of 'select_blueprint_bloc.dart';
 @immutable
 class SelectBlueprintState extends Equatable {
   const SelectBlueprintState({
-    this.blueprints = const [],
+    this.allBlueprints = const [],
     this.query = '',
   });
 
-  final List<Blueprint> blueprints;
+  final List<Blueprint> allBlueprints;
   final String query;
 
   SelectBlueprintState copyWith({
-    List<Blueprint>? blueprints,
+    List<Blueprint>? allBlueprints,
     String? query,
   }) {
     return SelectBlueprintState(
-      blueprints: blueprints ?? this.blueprints,
+      allBlueprints: allBlueprints ?? this.allBlueprints,
       query: query ?? this.query,
     );
   }
 
-  List<Blueprint> get filteredBlueprints {
-    return blueprints.where(
+  List<Blueprint> get blueprints {
+    return allBlueprints.where(
         (blueprint) => blueprint.matches(query),
         ).toList();
   }
