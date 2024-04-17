@@ -36,7 +36,7 @@ class Blueprint extends Equatable {
     );
   }
 
-  bool matchesQuery(String query) {
+  bool matches(String query) {
     if (query.isEmpty) return true;
 
     final pattern = RegExp(r'\b' + RegExp.escape(query.toLowerCase()));

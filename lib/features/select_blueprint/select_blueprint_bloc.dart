@@ -29,7 +29,9 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     Emitter<SelectBlueprintState> emit,
   ) async {
     emit(state.copyWith(
-      blueprints: event.blueprints,
+      blueprints: event.blueprints.where(
+        (blueprint) => blueprint.matches(state.query),
+        ).toList(),
     ),);
   }
 
@@ -37,15 +39,8 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     SearchedBlueprints event,
     Emitter<SelectBlueprintState> emit,
   ) async {
-    blueprintRepository.getBlueprints().listen(
-      (blueprints) {
-        emit(state.copyWith(
-          blueprints: blueprints.where(
-            (blueprint) => blueprint.matchesQuery(event.query),
-          ).toList(),
-          ),
-        );
-      },
-    );
+    emit(state.copyWith(
+      query: event.query,
+    ),);
   }
 }

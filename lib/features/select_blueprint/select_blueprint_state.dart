@@ -4,22 +4,28 @@ part of 'select_blueprint_bloc.dart';
 class SelectBlueprintState extends Equatable {
   const SelectBlueprintState({
     this.blueprints = const [],
-    this.isFiltered = false,
+    this.query = '',
   });
 
   final List<Blueprint> blueprints;
-  final bool isFiltered;
+  final String query;
 
   SelectBlueprintState copyWith({
     List<Blueprint>? blueprints,
-    bool? isFiltered,
+    String? query,
   }) {
     return SelectBlueprintState(
       blueprints: blueprints ?? this.blueprints,
-      isFiltered: isFiltered ?? this.isFiltered,
+      query: query ?? this.query,
     );
   }
 
+  List<Blueprint> get filteredBlueprints {
+    return blueprints.where(
+        (blueprint) => blueprint.matches(query),
+        ).toList();
+  }
+
   @override
-  List<Object?> get props => [blueprints, isFiltered];
+  List<Object?> get props => [blueprints, query];
 }

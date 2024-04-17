@@ -21,6 +21,12 @@ class BlueprintRepository {
     return _subject.stream;
   }
 
+  Future<List<Blueprint>> getMatching(String query) async {
+    return (await _subject.last)
+      .where((blueprint) => blueprint.matches(query))
+      .toList();
+  }
+
   void dispose() {
     _subject.close();
   }
