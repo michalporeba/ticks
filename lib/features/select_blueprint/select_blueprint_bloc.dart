@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:ticks/entities/blueprint/blueprint.dart';
 import 'package:ticks/entities/blueprint/blueprint_repository.dart';
@@ -13,25 +14,23 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
   SelectBlueprintBloc({
     required this.blueprintRepository,
   }) : super(const SelectBlueprintState()) {
-    on<LoadedSelectBlueprint>(_onLoad);
+    on<LoadedBlueprints>(_onLoad);
     on<SearchedBlueprints>(_onSearch);
-    add(LoadedSelectBlueprint());
+
+    blueprintRepository.getBlueprints().listen((blueprints) {
+      add(LoadedBlueprints(blueprints: blueprints));
+    });
   }
 
   final BlueprintRepository blueprintRepository;
 
   Future<void> _onLoad(
-    LoadedSelectBlueprint event,
+    LoadedBlueprints event,
     Emitter<SelectBlueprintState> emit,
   ) async {
-    blueprintRepository.getBlueprints().listen(
-      (blueprints) {
-        emit(state.copyWith(
-          blueprints: blueprints,
-          ),
-        );
-      },
-    );
+    emit(state.copyWith(
+      blueprints: event.blueprints,
+    ),);
   }
 
   Future<void> _onSearch(

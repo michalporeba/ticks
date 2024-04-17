@@ -7,7 +7,14 @@ sealed class SelectBlueprintEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadedSelectBlueprint extends SelectBlueprintEvent {}
+class LoadedBlueprints extends SelectBlueprintEvent {
+  const LoadedBlueprints({required this.blueprints});
+
+  final List<Blueprint> blueprints;
+
+  @override
+  List<Object> get props => [blueprints];
+}
 
 class SearchedBlueprints extends SelectBlueprintEvent {
   const SearchedBlueprints(this.query);
