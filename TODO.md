@@ -41,7 +41,7 @@ class LocalTicksApi extends TicksApi {
   void _init() {
     final blueprintsJson = _getValue(blueprintsCollectionKey);
     if (blueprintsJson != null) {
-      final blueprints = List<Map<dynamic, dynamic>>.from(
+      final blueprints = List<  
         json.decode(blueprintsJson) as List,
       )
           .map((json) => Blueprint.fromJson(Map<String, dynamic>.from(json)))
