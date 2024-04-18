@@ -2,20 +2,28 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:ticks/entities/blueprint/blueprint.dart';
+import 'package:ticks/entities/checklist/checklist.dart';
 
 part 'bootstrap_checklist_event.dart';
 part 'bootstrap_checklist_state.dart';
 
 class BootstrapChecklistBloc
 extends Bloc<BootstrapChecklistEvent, BootstrapChecklistState> {
-  BootstrapChecklistBloc() : super(const BootstrapChecklistState()) {
-    on<SelectedBlueprint>(_onChecklistSelected);
+  BootstrapChecklistBloc() : super(const BootstrapChecklistState(
+    checklist: null,
+    stage: BootstrapChecklistStage.blueprint,
+  ),) {
+    on<SelectedBlueprint>(_onBlueprintSelected);
   }
 
-  Future<void> _onChecklistSelected(
+  Future<void> _onBlueprintSelected(
     SelectedBlueprint event,
     Emitter<BootstrapChecklistState> emit,
   ) async {
-    emit(const BootstrapChecklistState());
+    print('On Blueprint Selected ${event.blueprint.title}');
+    emit(BootstrapChecklistState(
+      checklist: Checklist.from(blueprint: event.blueprint),
+      stage: BootstrapChecklistStage.blueprint,
+    ),);
   }
 }

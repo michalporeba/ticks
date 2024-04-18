@@ -1,5 +1,8 @@
 # TODO
 
+* Use RepositoryProvider isntead of direct passing repositories.
+* Consider using reflection to register roots to features.
+
 * https://github.com/maxonflutter/Doctor-Booking-App-With-Flutter/blob/main/lib/shared/theme/app_theme.dart
 
 
