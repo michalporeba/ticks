@@ -6,3 +6,12 @@ sealed class BootstrapChecklistEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class SelectedBlueprint extends BootstrapChecklistEvent {
+  const SelectedBlueprint({required this.blueprint});
+
+  final Blueprint blueprint;
+
+  @override
+  List<Object> get props => [blueprint];
+}

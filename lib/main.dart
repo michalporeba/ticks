@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/apis/demo/demo_blueprint_api.dart';
 import 'package:ticks/app/app_theme.dart';
 import 'package:ticks/entities/blueprint/blueprint_repository.dart';
+import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_bloc.dart';
+import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_view.dart';
 import 'package:ticks/features/home/home.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
@@ -16,6 +18,10 @@ void main() {
       blueprintRepository: blueprintRepository,),
   );
 
+  final bootstrapChecklistBlocProvider = BlocProvider(
+    create: (ctx) => BootstrapChecklistBloc(),
+  );
+
   final homeBlocProvider = BlocProvider(
     create: (ctx) => HomeBloc(),
   );
@@ -24,6 +30,7 @@ void main() {
     app: const TicksApp(),
     blocProviders: [ // globally accessible blocs
       blueprintBlocProvider,
+      bootstrapChecklistBlocProvider,
       homeBlocProvider,
     ],
     repositoryProviders: const [],
@@ -67,8 +74,9 @@ class TicksApp extends StatelessWidget {
       theme: AppTheme.sjac(context),
       initialRoute: HomePage.id,
       routes: {
-        SelectBlueprintPage.id: (context) => const SelectBlueprintPage(),
+        BootstrapChecklistPage.id: (context) => const BootstrapChecklistPage(),
         HomePage.id: (context) => const HomePage(),
+        SelectBlueprintPage.id: (context) => const SelectBlueprintPage(),
       },
     );
   }
