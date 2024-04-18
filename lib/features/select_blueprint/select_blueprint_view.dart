@@ -11,7 +11,6 @@ class SelectBlueprintPage extends StatelessWidget {
 
   static String id = 'startAChecklistView';
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SelectBlueprintBloc, SelectBlueprintState>(

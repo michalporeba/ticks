@@ -42,6 +42,11 @@ Widget blueprintConfirmationView(
           label: 'Confirm',
           onPressed: () {},
         ),
+        FloatingActionData(
+          icon: Icons.cancel,
+          label: 'Cancel',
+          onPressed: () { Navigator.pop(context); },
+        ),
       ],
     ),
   );

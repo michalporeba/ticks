@@ -2,13 +2,31 @@
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
     "id": "a112ede4-fa03-4d6d-9214-3434eca08160",
-    "type": "vehicle",
-    "label": "HK 105"
+    "label": "HK 105",
+    "types": ["vehicle", "ambulance"]
   },
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
     "id": "45a3f340-5b28-4e7f-b82d-681ff4fb6baa",
-    "type": "vehicle",
-    "label": "HK 102"
+    "label": "HK 102",
+    "types": ["vehicle", "ambulance"]
+  },
+  {
+    "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
+    "id": "8dd86e33-0b82-4989-83e0-086071eee8b3",
+    "label": "HK 423",
+    "types": ["radio"]
+  },
+  {
+    "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
+    "id": "8d8c9e38-0cab-4c2e-bf47-5b1b94d7f68e",
+    "label": "HK 424",
+    "types": ["radio"]
+  },
+  {
+    "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
+    "id": "82f1f768-890a-4469-9c4f-0f4c082e1c76",
+    "label": "HK 425",
+    "types": ["radio"]
   }
 ]

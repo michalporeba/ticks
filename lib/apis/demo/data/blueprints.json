@@ -4,14 +4,20 @@
     "id": "3ebe7c02-fee1-4fdf-b375-93952f5bb6c7",
     "title": "Ambulance",
     "description": "A collection of checks relating to an ambulance use.",
-    "version": "2024-04-17 0"
+    "version": "2024-04-17 0",
+    "requirements": {
+      "resource": "ambulance"
+    }
   },
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
     "id": "70c24efa-dcad-4daf-929f-ad0d07605da7",
     "title": "Radio",
     "description": "A collection of checks relating to use of hand-held radio.",
-    "version": "2024-04-17 0"
+    "version": "2024-04-17 0",
+    "requirements": {
+      "resource": "radio"
+    }
   },
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
