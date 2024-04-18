@@ -26,28 +26,23 @@ class SelectBlueprintPage extends StatelessWidget {
                 .add(SearchedBlueprints(query));
             },
           ),
-          body: Column(
-            children: [
-              SingleChildScrollView(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  children: state.blueprints.map(
-                          (blueprint) => BlueprintWidget(
-                            data: blueprint,
-                            onTap: (blueprint) {
-                              BlocProvider
-                                .of<BootstrapChecklistBloc>(context)
-                                .add(SelectedBlueprint(blueprint: blueprint));
+          body: SingleChildScrollView(
+            child: Column(
+              children: state.blueprints.map(
+                      (blueprint) => BlueprintWidget(
+                        data: blueprint,
+                        onTap: (blueprint) {
+                          BlocProvider
+                            .of<BootstrapChecklistBloc>(context)
+                            .add(SelectedBlueprint(blueprint: blueprint));
 
-                              Navigator.pushNamed(
-                                context,
-                                BootstrapChecklistPage.id,);
-                            },
-                          ),
-                  ).toList(),
-                ),
-              ),
-            ],
+                          Navigator.pushNamed(
+                            context,
+                            BootstrapChecklistPage.id,);
+                        },
+                      ),
+              ).toList(),
+            ),
           ),
           floatingActionButton: FloatingActionButtons(
             actions: [

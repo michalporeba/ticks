@@ -20,7 +20,6 @@ extends Bloc<BootstrapChecklistEvent, BootstrapChecklistState> {
     SelectedBlueprint event,
     Emitter<BootstrapChecklistState> emit,
   ) async {
-    print('On Blueprint Selected ${event.blueprint.title}');
     emit(BootstrapChecklistState(
       checklist: Checklist.from(blueprint: event.blueprint),
       stage: BootstrapChecklistStage.blueprint,

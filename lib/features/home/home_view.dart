@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             actions: [
               FloatingActionData(
                 icon: Icons.checklist,
-                label: 'Start a checklist',
+                label: 'Find a checklist',
                 onPressed: () {
                   BlocProvider
                     .of<SelectBlueprintBloc>(context)

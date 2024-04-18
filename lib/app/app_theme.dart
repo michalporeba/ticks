@@ -24,7 +24,6 @@ class AppTheme {
           onPrimary: Color(0xff000000),
           secondary: Color(0xff03a475),
           onSecondary: Color(0xffffffff),
-
       ),
       iconTheme: base.iconTheme.copyWith(
         size: defaultIconSize * scaleFactor,
