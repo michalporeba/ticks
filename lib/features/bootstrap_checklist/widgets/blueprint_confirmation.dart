@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/widgets/app_bar.dart';
 import 'package:ticks/widgets/floating_actions.dart';
@@ -10,7 +11,7 @@ Widget blueprintConfirmationView(
   return Scaffold(
     appBar: createPageAppBar(context, state),
     body: SingleChildScrollView(
-      padding: const EdgeInsets.all(8),
+      //padding: const EdgeInsets.all(8),
       child: Column(
         children: [
           Padding(
@@ -40,7 +41,11 @@ Widget blueprintConfirmationView(
         FloatingActionData(
           icon: Icons.check_circle_outline,
           label: 'Confirm',
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider
+              .of<BootstrapChecklistBloc>(context)
+              .add(ConfirmedBlueprint());
+          },
         ),
         FloatingActionData(
           icon: Icons.cancel,

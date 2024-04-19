@@ -14,6 +14,7 @@ extends Bloc<BootstrapChecklistEvent, BootstrapChecklistState> {
     stage: BootstrapChecklistStage.blueprint,
   ),) {
     on<SelectedBlueprint>(_onBlueprintSelected);
+    on<ConfirmedBlueprint>(_onBlueprintConfirmed);
   }
 
   Future<void> _onBlueprintSelected(
@@ -24,5 +25,12 @@ extends Bloc<BootstrapChecklistEvent, BootstrapChecklistState> {
       checklist: Checklist.from(blueprint: event.blueprint),
       stage: BootstrapChecklistStage.blueprint,
     ),);
+  }
+
+  Future<void> _onBlueprintConfirmed(
+    ConfirmedBlueprint event,
+    Emitter<BootstrapChecklistState> emit,
+  ) async {
+    emit(state.copyWith(stage: BootstrapChecklistStage.resource));
   }
 }

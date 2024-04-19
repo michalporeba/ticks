@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist.dart';
 import 'package:ticks/features/bootstrap_checklist/widgets/blueprint_confirmation.dart';
+import 'package:ticks/features/bootstrap_checklist/widgets/resource_selection.dart';
 
 typedef StagePageBuilder = Widget Function(
   BuildContext,
@@ -27,6 +28,7 @@ class BootstrapChecklistPage extends StatelessWidget {
   ) {
     final stagePageBuilders = <BootstrapChecklistStage, StagePageBuilder>{
       BootstrapChecklistStage.blueprint: blueprintConfirmationView,
+      BootstrapChecklistStage.resource: resourceSelectionView,
     };
 
     return stagePageBuilders[state.stage]!.call(context, state);

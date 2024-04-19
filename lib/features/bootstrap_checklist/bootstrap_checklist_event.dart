@@ -15,3 +15,5 @@ class SelectedBlueprint extends BootstrapChecklistEvent {
   @override
   List<Object> get props => [blueprint];
 }
+
+class ConfirmedBlueprint extends BootstrapChecklistEvent {}
