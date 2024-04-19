@@ -18,7 +18,7 @@ extends Bloc<SelectBlueprintEvent, SelectBlueprintState> {
     on<SearchedBlueprints>(_onSearch);
     on<RequestedBlueprints>(_onRequested);
 
-    blueprintRepository.getBlueprints().listen((blueprints) {
+    blueprintRepository.getAll().listen((blueprints) {
       add(LoadedBlueprints(blueprints: blueprints));
     });
   }

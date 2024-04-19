@@ -11,7 +11,7 @@ class DemoBlueprintApi implements BlueprintApi {
   }
 
   @override
-  Future<List<Blueprint>> getBlueprints() async {
+  Future<List<Blueprint>> getAll() async {
     final jsonString = await rootBundle.loadString('lib/apis/demo/data/blueprints.json');
 
     final blueprints = List<Map<dynamic, dynamic>>.from(
@@ -20,6 +20,6 @@ class DemoBlueprintApi implements BlueprintApi {
     .map((json) => Blueprint.fromJson(Map<String, dynamic>.from(json)))
     .toList();
 
-    return Future.value(blueprints);
+    return blueprints;
   }
 }

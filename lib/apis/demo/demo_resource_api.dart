@@ -15,6 +15,13 @@ class DemoResourceApi implements ResourceApi {
     .map((json) => Resource.fromJson(Map<String, dynamic>.from(json)))
     .toList();
 
-    return Future.value(resources);
+    return resources;
+  }
+
+  @override
+  Future<List<Resource>> getAllOfType(String type) async {
+    return (await getAll())
+      .where((element) => element.types.contains(type.toLowerCase()))
+      .toList();
   }
 }

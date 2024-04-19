@@ -66,33 +66,21 @@ class ValueDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          InputDecorator(
-            decoration: InputDecoration(
-              labelText: label,
-              border: const OutlineInputBorder(),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 20,
-              ),
+      child:
+        InputDecorator(
+          decoration: InputDecoration(
+            labelText: label,
+            border: const UnderlineInputBorder(),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 24,
             ),
-            child: Text(
-              value,
-              style: Theme.of(context).textTheme.bodyMedium,
-              ),
+          ),
+          child: Text(
+            value,
+            style: Theme.of(context).textTheme.bodyMedium,
             ),
-          // SizedBox(height: 8),
-          // Text(
-          //   'here goes the additional text',
-          //   style: TextStyle(
-          //     color: Colors.grey[600],
-          //     fontSize: 14,
-          //   ),
-          // ),
-        ],
-      ),
+          ),
     );
   }
 }

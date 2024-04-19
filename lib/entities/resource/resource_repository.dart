@@ -12,7 +12,7 @@ class ResourceRepository {
 
   final ResourceApi remoteApi;
 
-  Stream<List<Resource>> getResources() {
+  Stream<List<Resource>> get() {
     remoteApi
       .getAll()
       .then((resources) => _subject.sink.add(resources));

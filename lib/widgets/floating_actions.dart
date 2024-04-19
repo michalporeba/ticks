@@ -47,6 +47,7 @@ Consider removing the widget if you do not have actions to display.
             child: FloatingActionButton.extended(
               icon: Icon(action.icon),
               label: Text(action.label),
+              heroTag: action.label,
               onPressed: action.onPressed,
               backgroundColor:
                 action == actions.first

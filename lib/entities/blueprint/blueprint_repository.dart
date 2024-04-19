@@ -13,9 +13,9 @@ class BlueprintRepository {
 
   final BlueprintApi remoteApi;
 
-  Stream<List<Blueprint>> getBlueprints() {
+  Stream<List<Blueprint>> getAll() {
     remoteApi
-      .getBlueprints()
+      .getAll()
       .then((blueprints) => _subject.sink.add(blueprints));
 
     return _subject.stream;
