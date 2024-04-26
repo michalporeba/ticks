@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 AppBar createAppBar({
   required BuildContext context,
-  required String title,
+  String title = '',
   void Function(String)? onSearch,
 }) {
   final theme = Theme.of(context);
