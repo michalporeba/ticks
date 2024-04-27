@@ -6,7 +6,7 @@ import 'package:ticks/widgets/ticks_app_bar.dart';
 
 class ManageResourcesPage extends StatelessWidget {
   const ManageResourcesPage({super.key});
-  static String id = 'currentCheckLists';
+  static String id = 'resourceManagerPage';
 
   @override
   Widget build(BuildContext context) {

@@ -6,6 +6,7 @@ import 'package:ticks/entities/blueprint/blueprint_repository.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_view.dart';
 import 'package:ticks/features/home/home.dart';
+import 'package:ticks/features/manage_resources/manage_resources.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
 void main() {
@@ -15,7 +16,8 @@ void main() {
 
   final blueprintBlocProvider = BlocProvider(
     create: (ctx) => SelectBlueprintBloc(
-      blueprintRepository: blueprintRepository,),
+      blueprintRepository: blueprintRepository,
+    ),
   );
 
   final bootstrapChecklistBlocProvider = BlocProvider(
@@ -26,14 +28,21 @@ void main() {
     create: (ctx) => HomeBloc(),
   );
 
-  runApp(AppWithProviders(
-    app: const TicksApp(),
-    blocProviders: [ // globally accessible blocs
-      blueprintBlocProvider,
-      bootstrapChecklistBlocProvider,
-      homeBlocProvider,
-    ],
-    repositoryProviders: const [],
+  final manageResourceBlocProvider = BlocProvider(
+    create: (ctx) => ManageResourcesBloc(),
+  );
+
+  runApp(
+    AppWithProviders(
+      app: const TicksApp(),
+      blocProviders: [
+        // globally accessible blocs
+        blueprintBlocProvider,
+        bootstrapChecklistBlocProvider,
+        homeBlocProvider,
+        manageResourceBlocProvider,
+      ],
+      repositoryProviders: const [],
     ),
   );
 }
@@ -53,12 +62,12 @@ class AppWithProviders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return
-    //MultiRepositoryProvider(
-      //providers: repositoryProviders,
-      //child:
-      MultiBlocProvider(
-        providers: blocProviders,
-        child: app,
+        //MultiRepositoryProvider(
+        //providers: repositoryProviders,
+        //child:
+        MultiBlocProvider(
+      providers: blocProviders,
+      child: app,
       //),
     );
   }
@@ -72,11 +81,12 @@ class TicksApp extends StatelessWidget {
     return MaterialApp(
       title: 'Checklists',
       theme: AppTheme.sjac(context),
-      initialRoute: HomePage.id,
+      initialRoute: ManageResourcesPage.id,
       routes: {
         BootstrapChecklistPage.id: (context) => const BootstrapChecklistPage(),
         HomePage.id: (context) => const HomePage(),
         SelectBlueprintPage.id: (context) => const SelectBlueprintPage(),
+        ManageResourcesPage.id: (context) => const ManageResourcesPage(),
       },
     );
   }
