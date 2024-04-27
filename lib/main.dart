@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ticks/apis/demo/demo_blueprint_api.dart';
 import 'package:ticks/app/app_theme.dart';
+import 'package:ticks/app/bloc_providers.dart';
 import 'package:ticks/entities/blueprint/blueprint_repository.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_view.dart';
@@ -10,39 +11,10 @@ import 'package:ticks/features/manage_resources/manage_resources.dart';
 import 'package:ticks/features/select_blueprint/select_blueprint.dart';
 
 void main() {
-  final demoBlueprintApi = DemoBlueprintApi();
-
-  final blueprintRepository = BlueprintRepository(remoteApi: demoBlueprintApi);
-
-  final blueprintBlocProvider = BlocProvider(
-    create: (ctx) => SelectBlueprintBloc(
-      blueprintRepository: blueprintRepository,
-    ),
-  );
-
-  final bootstrapChecklistBlocProvider = BlocProvider(
-    create: (ctx) => BootstrapChecklistBloc(),
-  );
-
-  final homeBlocProvider = BlocProvider(
-    create: (ctx) => HomeBloc(),
-  );
-
-  final manageResourceBlocProvider = BlocProvider(
-    create: (ctx) => ManageResourcesBloc(),
-  );
-
   runApp(
-    AppWithProviders(
-      app: const TicksApp(),
-      blocProviders: [
-        // globally accessible blocs
-        blueprintBlocProvider,
-        bootstrapChecklistBlocProvider,
-        homeBlocProvider,
-        manageResourceBlocProvider,
-      ],
-      repositoryProviders: const [],
+    const AppWithProviders(
+      app: TicksApp(),
+      repositoryProviders: [],
     ),
   );
 }
@@ -50,12 +22,10 @@ void main() {
 class AppWithProviders extends StatelessWidget {
   const AppWithProviders({
     required this.app,
-    required this.blocProviders,
     required this.repositoryProviders,
     super.key,
   });
-
-  final List<BlocProvider<dynamic>> blocProviders;
+  
   final List<RepositoryProvider<dynamic>> repositoryProviders;
   final Widget app;
 
@@ -66,7 +36,7 @@ class AppWithProviders extends StatelessWidget {
         //providers: repositoryProviders,
         //child:
         MultiBlocProvider(
-      providers: blocProviders,
+      providers: createBlocProviders(),
       child: app,
       //),
     );
