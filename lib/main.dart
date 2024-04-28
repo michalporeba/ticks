@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ticks/apis/demo/demo_blueprint_api.dart';
 import 'package:ticks/app/app_theme.dart';
 import 'package:ticks/app/bloc_providers.dart';
-import 'package:ticks/entities/blueprint/blueprint_repository.dart';
-import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_bloc.dart';
 import 'package:ticks/features/bootstrap_checklist/bootstrap_checklist_view.dart';
 import 'package:ticks/features/home/home.dart';
 import 'package:ticks/features/manage_resources/manage_resources.dart';

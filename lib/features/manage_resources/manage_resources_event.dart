@@ -7,4 +7,24 @@ sealed class ManageResourcesEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadedManageResources extends ManageResourcesEvent {}
+class RequestedResources extends ManageResourcesEvent {}
+
+class LoadedManageResources extends ManageResourcesEvent {
+  const LoadedManageResources({
+    required this.resources,
+  });
+
+  final List<Resource> resources;
+
+  @override
+  List<Object> get props => [resources];
+}
+
+class SearchedResources extends ManageResourcesEvent {
+  const SearchedResources(this.query);
+
+  final String query;
+
+  @override
+  List<Object> get props => [query];
+}

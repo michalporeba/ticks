@@ -32,6 +32,13 @@ class Resource extends Equatable {
     );
   }
 
+  bool matches(String query) {
+    if (query.isEmpty) return true;
+
+    final pattern = RegExp(r'\b' + RegExp.escape(query.toLowerCase()));
+    return pattern.hasMatch(label.toLowerCase());
+  }
+
   static Resource fromJson(JsonMap json) => _$ResourceFromJson(json);
 
   JsonMap toJson() => _$ResourceToJson(this);
