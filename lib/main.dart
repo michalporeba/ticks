@@ -22,7 +22,7 @@ class AppWithProviders extends StatelessWidget {
     required this.repositoryProviders,
     super.key,
   });
-  
+
   final List<RepositoryProvider<dynamic>> repositoryProviders;
   final Widget app;
 
