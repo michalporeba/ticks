@@ -35,7 +35,21 @@ class ManageResourcesPage extends StatelessWidget {
     if (state.resources.isEmpty) {
       return _nothingToSee(context);
     }
-    return const Placeholder();
+    return SingleChildScrollView(
+      child: Column(
+        children: _resourcesList(context, state),
+      ),
+    );
+  }
+
+  List<Widget> _resourcesList(BuildContext context, ManageResourcesState state) {
+    return state.resources.map((resource) {
+      return ListTile(
+          title: Text(resource.label),
+          subtitle: const Text('hello',),
+          onTap: () {
+    },);
+    }).toList();
   }
 
   Widget _nothingToSee(BuildContext context) {

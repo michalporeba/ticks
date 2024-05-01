@@ -8,8 +8,8 @@ import 'package:ticks/entities/resource/resource_type.dart';
 class DemoResourceApi implements ResourceApi {
   @override
   Future<List<Resource>> getAll() async {
-    final jsonString = await rootBundle.loadString('lib/apis/demo/data/blueprints.json');
-
+    final jsonString = await rootBundle.loadString('lib/apis/demo/data/resources.json');
+    
     final resources = List<Map<dynamic, dynamic>>.from(
         json.decode(jsonString) as List,
     )

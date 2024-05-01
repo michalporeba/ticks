@@ -9,7 +9,7 @@ part 'manage_resources_event.dart';
 part 'manage_resources_state.dart';
 
 class ManageResourcesBloc
-extends Bloc<ManageResourcesEvent, ManageResourcesState> {
+    extends Bloc<ManageResourcesEvent, ManageResourcesState> {
   ManageResourcesBloc({
     required this.resourceRepository,
   }) : super(const ManageResourcesState()) {
@@ -35,15 +35,22 @@ extends Bloc<ManageResourcesEvent, ManageResourcesState> {
     LoadedManageResources event,
     Emitter<ManageResourcesState> emit,
   ) async {
-    emit(state);
+    final orderedResources = event.resources.toList()
+      ..sort((a, b) => a.label.compareTo(b.label));
+
+    emit(state.copyWith(
+      allResources: orderedResources,
+    ),);
   }
 
   Future<void> _onSearch(
     SearchedResources event,
     Emitter<ManageResourcesState> emit,
   ) async {
-    emit(state.copyWith(
-      query: event.query,
-    ),);
+    emit(
+      state.copyWith(
+        query: event.query,
+      ),
+    );
   }
 }
