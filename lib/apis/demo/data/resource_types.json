@@ -2,12 +2,14 @@
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
     "id": "a4ada6a3-2433-4851-8a73-8e011966a879",
+    "icon": "0xf6b2",
     "label": "Ambulance",
     "description": "Ambulance"
   },
   {
     "org": "13c744cd-1eb2-4c45-ac4a-c673757d6ba4",
     "id": "62f7cd5e-0cef-45f8-a6a2-024bbc7fc715",
+    "icon": "0xe502",
     "label": "Radio",
     "description": "A handneld radio"
   }
