@@ -45,9 +45,10 @@ class ManageResourcesPage extends StatelessWidget {
   List<Widget> _resourcesList(BuildContext context, ManageResourcesState state) {
     return state.resources.map((resource) {
       return ListTile(
-          title: Text(resource.label),
-          subtitle: const Text('hello',),
-          onTap: () {
+        leading: const Icon(Icons.checklist),
+        title: Text(resource.label, style: Theme.of(context).textTheme.headlineMedium,),
+        //subtitle: const Text('hello',),
+        onTap: () {
     },);
     }).toList();
   }
